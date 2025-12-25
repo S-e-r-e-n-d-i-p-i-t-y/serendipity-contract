@@ -275,7 +275,7 @@
       (let
         (
           (random-seed-full (unwrap-panic (get-block-info? id-header-hash (- current-block u1))))
-          (random-seed (unwrap-panic (as-max-len? random-seed-full u16)))
+          (random-seed (unwrap-panic (as-max-len? (unwrap-panic (slice? random-seed-full u0 u16)) u16)))
           (random-number (mod (hash-to-uint random-seed) participants-count))
           (winner (unwrap! (element-at participants random-number) ERR_NO_TICKETS))
         )
